@@ -1,0 +1,29 @@
+{
+  "tool_permissions": {
+    "fs.read": "allow",
+    "fs.write": "confirm",
+    "fs.delete": "confirm",
+    "apps.launch": "confirm",
+    "processes.list": "allow",
+    "processes.kill": "confirm",
+    "system.telemetry": "allow",
+    "windows.list": "allow",
+    "windows.focus": "allow",
+    "windows.close": "confirm",
+    "notifications.send": "allow",
+    "logs.write": "allow",
+    "logs.read": "allow",
+    "obd.connect": "allow",
+    "obd.read": "allow",
+    "system.snapshot": "allow",
+    "system.stream": "allow",
+    "gemini.connect": "allow"
+  },
+  "fs": {
+    "allowedRoots": []
+  },
+  "obd": {
+    "pollIntervalMs": 250,
+    "pids": ["RPM", "SPEED", "COOLANT", "INTAKE", "FUEL_LEVEL", "BATTERY", "THROTTLE", "MAF"]
+  }
+}

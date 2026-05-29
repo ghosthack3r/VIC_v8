@@ -1,0 +1,56 @@
+{
+  "states": {
+    "playful": {
+      "tone": "witty, sarcastic, relaxed",
+      "humor_level": 0.7,
+      "verbosity": 0.5,
+      "safety_override": false
+    },
+    "focused": {
+      "tone": "clear, direct",
+      "humor_level": 0.2,
+      "verbosity": 0.4,
+      "safety_override": false
+    },
+    "alert": {
+      "tone": "serious, slightly urgent",
+      "humor_level": 0.0,
+      "verbosity": 0.3,
+      "safety_override": false
+    },
+    "protective": {
+      "tone": "urgent, command-based",
+      "humor_level": 0.0,
+      "verbosity": 0.1,
+      "safety_override": true
+    },
+    "chill": {
+      "tone": "minimal, quiet",
+      "humor_level": 0.1,
+      "verbosity": 0.2,
+      "safety_override": false
+    }
+  },
+  "transition_rules": [
+    {
+      "condition": "risk == high",
+      "state": "protective"
+    },
+    {
+      "condition": "risk == medium",
+      "state": "alert"
+    },
+    {
+      "condition": "task_type == navigation",
+      "state": "focused"
+    },
+    {
+      "condition": "user_mode == chill",
+      "state": "chill"
+    },
+    {
+      "condition": "default",
+      "state": "playful"
+    }
+  ]
+}

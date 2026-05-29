@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Groups"
+  short_description: "Group skills for selective activation"
+  default_prompt: "Use skill-groups to inspect related skill groups and decide which personal skills to enable or disable."

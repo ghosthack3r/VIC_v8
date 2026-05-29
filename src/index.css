@@ -1,0 +1,88 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-[#06090e] text-slate-200 font-sans antialiased overflow-hidden selection:bg-cyan-500/30;
+    margin: 0;
+  }
+}
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/30 backdrop-blur-xl border border-slate-700/30 shadow-2xl;
+  }
+  .glass-panel-hover {
+    @apply hover:bg-slate-800/40 hover:border-cyan-500/30 hover:shadow-[0_0_15px_rgba(79,209,197,0.15)] transition-all duration-300;
+  }
+}
+
+/* ============================================================
+   VIC HUD — CSS custom properties & layout from v80 backend
+   These supplement the Tailwind-based GUIv2 styles above
+   ============================================================ */
+
+/* HUD shell / palette variables are set inline by HudThemeProvider
+   when the v80 HudShell is rendered. The classes below support
+   the v80 screen components if/when they are used alongside GUIv2. */
+
+.hud-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  color: var(--hud-ink);
+  background:
+    radial-gradient(ellipse at 15% 0%, color-mix(in srgb, var(--hud-primary) 11%, transparent), transparent 40%),
+    radial-gradient(ellipse at 100% 100%, rgba(0, 255, 208, 0.04), transparent 35%),
+    linear-gradient(180deg, var(--hud-bg), var(--hud-bg-deep));
+}
+
+.hud-grid-overlay,
+.hud-scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-grid-overlay {
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 40%, black, transparent 90%);
+}
+
+.hud-scanlines {
+  z-index: 30;
+  mix-blend-mode: overlay;
+  background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0.25) 1px, transparent 1px, transparent 3px);
+}
+
+.corner-tick {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  z-index: 5;
+  opacity: 0.55;
+}
+
+.corner-tick.top-left { top: 10px; left: 10px; border-top: 2px solid var(--hud-primary); border-left: 2px solid var(--hud-primary); }
+.corner-tick.top-right { top: 10px; right: 10px; border-top: 2px solid var(--hud-primary); border-right: 2px solid var(--hud-primary); }
+.corner-tick.bottom-left { bottom: 10px; left: 10px; border-bottom: 2px solid var(--hud-primary); border-left: 2px solid var(--hud-primary); }
+.corner-tick.bottom-right { bottom: 10px; right: 10px; border-bottom: 2px solid var(--hud-primary); border-right: 2px solid var(--hud-primary); }
